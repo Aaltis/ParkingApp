@@ -1,0 +1,22 @@
+﻿@page
+@model ParkingApp.ChooseParkingSpaceModel
+@{
+    @if (Model.FreeParkingSpaces != null && Model.FreeParkingSpaces.Any())
+{
+    <ul>
+        @foreach (var space in Model.FreeParkingSpaces)
+        {
+            <li>
+                <form method="post">
+                    <input type="hidden" name="SpaceId" value="@space.Id" />
+                    <button type="submit">Reserve Space @space.Id</button>
+                </form>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No free parking spaces available.</p>
+}
+}

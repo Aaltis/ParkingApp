@@ -1,0 +1,23 @@
+﻿@page
+@model ParkingApp.Pages.ExitCarModel
+@{
+    ViewData["Title"] = "Ota auto ulos";
+}
+
+<h2>Ota auto ulos</h2>
+
+<form method="post">
+    <div>
+        <label for="licensePlate">License Plate:</label>
+        <input type="text" id="licensePlate" name="LicensePlate" value="@Model.LicensePlate" />
+    </div>
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <p style="color: red;">@Model.ErrorMessage</p>
+    }
+    @if (!string.IsNullOrEmpty(Model.PriceMessage))
+    {
+        <p style="color: red;">@Model.PriceMessage</p>
+    }
+    <button type="submit">Kerro Hinta</button>
+</form>

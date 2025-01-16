@@ -1,0 +1,42 @@
+﻿@page
+@model MaintenanceModel
+@{
+    ViewData["Title"] = "Maintenance";
+}
+
+<h2>Maintenance Dashboard</h2>
+
+<section>
+    <h3>Vapaa Parkkitila</h3>
+    <p>Vapaana: @Model.FreeSpacesCount</p>
+</section>
+
+<section>
+    <h3>Parkkeeratut autot</h3>
+    @if (Model.ParkedCars.Any())
+    {
+        <table style="border-collapse: collapse; width: 100%; margin-top: 20px;">
+            <thead>
+                <tr>
+                    <th style="border: 1px solid black; padding: 10px;">Parkkipaikka</th>
+                    <th style="border: 1px solid black; padding: 10px;">Rekisteri</th>
+                    <th style="border: 1px solid black; padding: 10px;">Parkkeerausaika</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var car in Model.ParkedCars)
+                {
+                    <tr>
+                        <td style="border: 1px solid black; padding: 10px; text-align: center;">@car.ParkingPlacesId</td>
+                        <td style="border: 1px solid black; padding: 10px; text-align: center;">@car.LicensePlate</td>
+                        <td style="border: 1px solid black; padding: 10px; text-align: center;">@car.ParkingTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Ei Autoja parkissa tällähetkellä</p>
+    }
+</section>

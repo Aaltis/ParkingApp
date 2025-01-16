@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Autotalli";
+}
+
+<h2>Lisää auto autotalliin</h2>
+
+<form method="post">
+    <div>
+        <label for="licensePlate">License Plate:</label>
+        <input type="text" id="licensePlate" name="LicensePlate" value="@Model.LicensePlate" />
+    </div>   
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <p style="color: red;">@Model.ErrorMessage</p>
+    }
+    <button type="submit">Send</button>
+</form>
